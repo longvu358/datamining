@@ -39,11 +39,10 @@ def crawl_listing(category_id):
     while True:
         params = {"limit": 40, "category": category_id, "page": page}
 
-        r = requests.get(API, params=params, headers=HEADERS)
-        if r.status_code != 200:
-            print("Error:", r.status_code)
+        data = fetch(API, params)
+
+        if not data:
             break
-        data = r.json().get("data")
 
         if r.status_code != 200:
             logger.error("Error: ", r.status_code)
