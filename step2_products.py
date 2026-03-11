@@ -44,10 +44,6 @@ def crawl_listing(category_id):
         if not data:
             break
 
-        if r.status_code != 200:
-            logger.error("Error: ", r.status_code)
-            break
-
         for p in data:
             products.append(
                 {
